@@ -33,4 +33,3 @@ Hero.all.each do |hero|
 end
 
 puts "🦸‍♀️ Done seeding!"
-
