@@ -37,4 +37,9 @@ class Hero_power(db.Model):
     hero = db.relationship('Hero', back_populates='powers') 
     power = db.relationship('Power', back_populates='heroes')
 
-
+    @validates('strength')
+    def validates_hero_powers(self, key, strength):
+        strength_list = ['Strong', 'Weak', 'Average']
+        if not any(substring in strength for substring in strength_list):
+            raise ValueError("Failed simple hero powers validation")
+        return strength
