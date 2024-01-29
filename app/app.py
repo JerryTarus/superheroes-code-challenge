@@ -179,9 +179,16 @@ api.add_resource(HeroPowers, '/hero_powers')
 
 
 
-
 if __name__ == '__main__':
     app.run(port=5555,debug=True)
+    with app.app_context():
+
+        #Create tables here if they don't exist
+        db.create_all()
+
+        # Here we call the seed_data function to populate the db 
+        seed_data()
+    app.run(port=5555, debug=True)
 
 
 
