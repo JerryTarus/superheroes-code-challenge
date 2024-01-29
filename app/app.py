@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+###### -------- JERRY TARUS ----------
 
 from flask import Flask, request, make_response, jsonify
 from flask_migrate import Migrate
@@ -22,7 +23,7 @@ class Home(Resource):
     def get(self):
          
         response_dict = {
-            "Message": "Super Heroes API",
+            "Message": "Let's set this API running Jerry",
         }
         
         response = make_response(
@@ -176,5 +177,12 @@ class HeroPowers(Resource):
 
 api.add_resource(HeroPowers, '/hero_powers')
 
+
+
+
 if __name__ == '__main__':
     app.run(port=5555,debug=True)
+
+
+
+
