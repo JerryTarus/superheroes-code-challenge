@@ -4,7 +4,7 @@ from flask import Flask, request, make_response, jsonify
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
-from models import db, Hero, HeroPower, Power, SerializerMixin
+from models import db, Hero, HeroPower, Power
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///heroes.db'
@@ -54,7 +54,7 @@ class Heroes(Resource):
         return response
     
 
-api.add_resource(Heroes, '/hero')
+api.add_resource(Heroes, '/heroes')
 
 class HeroesById(Resource):
 
@@ -81,7 +81,7 @@ class HeroesById(Resource):
         else:
             return make_response(jsonify({"error": "Hero not found"}), 404)
 
-api.add_resource(HeroesById, '/hero/<int:id>')
+api.add_resource(HeroesById, '/heroes/<int:id>')
 
 class Powers(Resource):
 
@@ -101,7 +101,7 @@ class Powers(Resource):
 
         return make_response(jsonify(powers),200)
 
-api.add_resource(Powers, '/power')
+api.add_resource(Powers, '/powers')
 
 class PowersById(Resource):
     
@@ -134,7 +134,7 @@ class PowersById(Resource):
         else:
             return make_response({"error" : "Power not found"}, 404)
         
-api.add_resource(PowersById, '/power/<int:id>')
+api.add_resource(PowersById, '/powers/<int:id>')
 
 class HeroPowers(Resource):
 
